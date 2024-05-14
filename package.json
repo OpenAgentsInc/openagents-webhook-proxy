@@ -1,0 +1,16 @@
+{
+    "name": "openagents-webhook-proxy",
+    "version": "1.0.0",
+    "description": "",
+    "scripts": {
+        "server": "node src/server.js",
+        "client": "node src/client.js"
+    },
+    "author": "OpenAgentsInc",
+    "license": "",
+    "type": "module",
+    "dependencies": {
+        "express": "^4.19.2",
+        "express-json": "^1.0.0"
+    }
+}
