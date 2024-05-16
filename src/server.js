@@ -15,7 +15,7 @@ app.post("/post", (req, res) => {
     const secret = req.query.secret;
     EVENTS.push({
         event: event,
-        timestamp: new Date(),
+        timestamp: Date.now(),
         secret: secret
     });
     res.json({ status: "ok" });
@@ -24,7 +24,7 @@ app.post("/post", (req, res) => {
 app.get("/get", (req, res) => {
     const secret = req.query.secret;
     EVENTS = EVENTS.filter((event) => {
-        return new Date() - event.timestamp < 1000 * 60 * 60;
+        return  Date.now()  - event.timestamp < 1000 * 60 * 60;
     });
     res.json(EVENTS.filter((event) => {
         return event.secret === secret;
