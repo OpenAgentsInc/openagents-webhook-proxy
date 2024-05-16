@@ -28,7 +28,12 @@ app.get("/get", (req, res) => {
     });
     res.json(EVENTS.filter((event) => {
         return event.secret === secret;
-    }).map((event) => event.event));
+    }).map((event) => {
+        return {
+            event: event.event,
+            timestamp: event.timestamp
+        }
+    }));
 });
 
 if (SERVER_CRT && SERVER_KEY) {

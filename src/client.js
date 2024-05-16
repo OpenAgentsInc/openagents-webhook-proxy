@@ -11,13 +11,16 @@ async function loop(){
         const eventsToPost = [];
         const response = await fetch(`${PROXY_ADDRESS}/get?secret=${PROXY_SECRET}`);
         const events = await response.json();
-        events.forEach((event) => {
+        console.log("Found", events.length, "events")
+        for(const event of events){
             if(event.timestamp > LAST_EVENT){
-                eventsToPost.push(event);
+                eventsToPost.push(event.event);
                 LAST_EVENT=event.timestamp;
             }
-        });
+        };
+        console.log("Posting", eventsToPost.length, "events")
         await Promise.allSettled(eventsToPost.map(async (event) => {
+            console.log("Propagating event", event);
             return fetch(WEBHOOK_ADDRESS, {
                 method: "POST",
                 headers: {
