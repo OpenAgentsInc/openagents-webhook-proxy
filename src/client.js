@@ -9,7 +9,7 @@ let LAST_EVENT=0;
 async function loop(){
     try{
         const eventsToPost = [];
-        const response = await fetch(`${PROXY_ADDRESS}/get?secret=${PROXY_SECRET}`);
+        const response = await fetch(`${PROXY_ADDRESS}/get` + (PROXY_SECRET ?`?secret=${PROXY_SECRET}`:``));
         const events = await response.json();
         for(const event of events){
             if(event.timestamp > LAST_EVENT){
