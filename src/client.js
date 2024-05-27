@@ -1,6 +1,6 @@
 
 
-const PROXY_ADDRESS= process.env.WEBHOOK_PROXY||"https://pool.openagents.com:3000";
+const PROXY_ADDRESS= process.env.WEBHOOK_PROXY||"https://playground.openagents.com:3000";
 const PROXY_SECRET = process.env.WEBHOOK_PROXY_SECRET || "";
 const WEBHOOK_ADDRESS = process.env.WEBHOOK || "http://localhost:8000/webhook/nostr";
 
